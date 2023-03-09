@@ -11,11 +11,10 @@ class User(AbstractUser):
 
 class Record(models.Model):
     user = models.ForeignKey(User, on_delete=models.CASCADE)
-    session_name = models.CharField(max_length=200)
-    class_name = models.CharField(max_length=200)
+    name = models.CharField(max_length=200)
     uri = models.URLField(unique=True)
     created = models.DateTimeField(auto_now_add=True)
     
 
     def __str__(self):
-        return f'{self.session_name} - {self.class_name}'
+        return self.name

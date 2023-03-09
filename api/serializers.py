@@ -58,8 +58,7 @@ class RegisterSerializer(serializers.ModelSerializer):
 
 class RecordSerializer(serializers.ModelSerializer):
     id = serializers.IntegerField(read_only=True)
-    session_name = serializers.CharField(required=True)
-    class_name = serializers.CharField(required=True)
+    name = serializers.CharField(required=True)
     file = serializers.FileField(
         write_only=True,
         max_length=None,
@@ -70,7 +69,7 @@ class RecordSerializer(serializers.ModelSerializer):
 
     class Meta:
         model = Record
-        fields = ['id','session_name', 'class_name', 'file', 'uri']
+        fields = ['id','name', 'file', 'uri']
 
     def create(self, validated_data):
 
@@ -82,8 +81,7 @@ class RecordSerializer(serializers.ModelSerializer):
 
         record = Record.objects.create(
             user = request.user,
-            session_name = validated_data['session_name'],
-            class_name = validated_data['class_name'],
+            name = validated_data['name'],
             uri = uri
         )
         
