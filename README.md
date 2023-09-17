@@ -1,5 +1,5 @@
 
-# captureek_server
+# captureek_api
 
 it's a backend rest api with django rest framework for captureek project that helps you to capture screen within the browser like chrome
 
